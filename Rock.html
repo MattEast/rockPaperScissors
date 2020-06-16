@@ -23,9 +23,7 @@
 <div class='Resultspara'>
         <p>Computer picks?</p>
         <p class ='compGo'></p>
-        
         <p class="roundWinner"></p>
-        <p class="score"></p>
         <p class="matchWinner"></p>
 </div>
 
@@ -35,10 +33,7 @@
 
         const select = document.querySelector('select');
         const para = document.querySelector('p');                
-        
         const compGo= document.querySelector('.compGo');
-        const score= document.querySelector('.score');
-       // const playerGo = document.querySelector('.playerGo');
         const playGo = document.querySelector('.playGo');
         const matchWinner = document.querySelector('.matchWinner');
         
@@ -123,9 +118,8 @@ function computerPlay(string) {
                alert(outcome)
 
         }
-        //document.getElementById
-      //  select.addEventListener('change',computerPlay);
-        playGo.addEventListener('click',playRound)
+       
+                                        playGo.addEventListener('click',playRound)
 
         </script>
 
