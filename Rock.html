@@ -25,7 +25,11 @@
         <p class ='compGo'></p>
         <p class="roundWinner"></p>
         <p class="matchWinner"></p>
-</div>
+        <p class="showPlayerScore"></p>
+        <p class="showComputerScore"></p>
+        <p class="round"></p>
+
+        </div>
 
 
 
@@ -36,9 +40,15 @@
         const compGo= document.querySelector('.compGo');
         const playGo = document.querySelector('.playGo');
         const matchWinner = document.querySelector('.matchWinner');
-        
-        
+        const score = document.querySelector('.score');
+        const round = document.querySelector('.round');
+        const showPlayerScore = document.querySelector('.showPlayerScore');
+        const showComputerScore = document.querySelector('.showComputerScore');
+       
 
+        let playerScore = 0
+        let computerScore = 0
+        let roundCount = 0
 
 function computerPlay(string) {
 
@@ -62,7 +72,12 @@ function computerPlay(string) {
                 let actualResult;
                 let winnerMessage;
                 
-
+                showPlayerScore.textContent = 'Player score: '; 
+                showComputerScore.textContent = 'Computer score: ';
+                round.textContent = 'Round Count: ';
+               
+                
+                
                 switch(player + computer)
                 {case 'RockRock':
                 resultmessage = " it's a draw! ";
@@ -100,24 +115,46 @@ function computerPlay(string) {
                 resultmessage = ' you lose! ';
                 actualResult = ' lose ';  
                 }
-
+               
                 switch(actualResult)
                 {case ' win ':
                 winnerMessage = player + ' Beats ' + computer; 
+                playerScore++;
                 break;
                 case ' lose ':
                 winnerMessage = computer + ' Beats ' + player;
+                computerScore++
                 break;
                 case ' draw ': 
                 winnerMessage = ' you both picked ' + player;
-                }
-
+                }       
+                let roundNumber = roundCount++;
                 let outcome = resultmessage + winnerMessage;
                 matchWinner.textContent = outcome
-
+                showPlayerScore.textContent += playerScore + ' '
+                showComputerScore.textContent +=computerScore + ' '
+                round.textContent +=roundCount + ' '
+                
+                           
+              
+                
+              
                alert(outcome)
+              
 
         }
+
+
+        function game(){
+
+
+
+
+                while(roundNumber <5){
+
+                }
+        }
+
        
                                         playGo.addEventListener('click',playRound)
 
