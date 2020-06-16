@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<head>
+
+</head>
+
+<body>
+        <p>Play Rock, Paper, Scissors.</p>
+
+<div class = "form">
+        <label for "playerChoice">Please select a weapon:</label>
+        <select name="playerChoice" id="playerOption">
+        <option value="">-- make a choice--</option>
+        <option value='Rock'>Rock</option>
+        <option value='Paper'>Paper</option>
+        <option value='Scissors'>Scissors</option>
+        <input type="submit" value="play" class="playGo">
+
+</select>
+</div>
+
+<div class='Resultspara'>
+        <p>Computer picks?</p>
+        <p class ='compGo'></p>
+        
+        <p class="roundWinner"></p>
+        <p class="score"></p>
+        <p class="matchWinner"></p>
+</div>
+
+
+
+        <script>
+
+        const select = document.querySelector('select');
+        const para = document.querySelector('p');                
+        
+        const compGo= document.querySelector('.compGo');
+        const score= document.querySelector('.score');
+       // const playerGo = document.querySelector('.playerGo');
+        const playGo = document.querySelector('.playGo');
+        const matchWinner = document.querySelector('.matchWinner');
+        
+        
+
+
+function computerPlay(string) {
+
+                  
+       
+                       const selections = ['Rock', 'Paper', 'Scissors'];
+                       let randomNumber = Math.floor(Math.random()*selections.length);
+                       let computerPick = selections[randomNumber];
+                       compGo.textContent = computerPick
+                       return computerPick;
+                       }
+
+                      // 
+                       //guessSubmit.addEventListener('click',checkGuess);
+
+        function playRound(){
+
+                var resultmessage;               
+                let player = select.value;
+                let computer = computerPlay();
+                let actualResult;
+                let winnerMessage;
+                
+
+                switch(player + computer)
+                {case 'RockRock':
+                resultmessage = " it's a draw! ";
+                actualResult = ' draw ';
+                break;
+                case 'RockPaper':
+                resultmessage = ' you lose! ';
+                actualResult = ' lose ';
+                break;
+                case 'RockScissors':
+                resultmessage = ' you win ';
+                actualResult = ' win ';
+                break;
+                case 'PaperPaper':
+                resultmessage = " it's a draw! ";
+                actualResult = ' draw ';
+                break;
+                case 'PaperRock':
+                resultmessage = ' you win ';
+                actualResult = ' win ';
+                break;
+                case 'PaperScissors':
+                resultmessage = ' you lose! ';
+                actualResult = ' lose ';
+                break;
+                case 'ScissorsScissors':
+                resultmessage = " it's a draw! ";
+                actualResult = ' draw ';
+                break; 
+                case 'ScissorsPaper':
+                resultmessage = ' you win ';
+                actualResult = ' win ';
+                break;
+                case 'ScissorsRock':
+                resultmessage = ' you lose! ';
+                actualResult = ' lose ';  
+                }
+
+                switch(actualResult)
+                {case ' win ':
+                winnerMessage = player + ' Beats ' + computer; 
+                break;
+                case ' lose ':
+                winnerMessage = computer + ' Beats ' + player;
+                break;
+                case ' draw ': 
+                winnerMessage = ' you both picked ' + player;
+                }
+
+                let outcome = resultmessage + winnerMessage;
+                matchWinner.textContent = outcome
+
+               alert(outcome)
+
+        }
+        //document.getElementById
+      //  select.addEventListener('change',computerPlay);
+        playGo.addEventListener('click',playRound)
+
+        </script>
+
+
+        </body>
+</html>
