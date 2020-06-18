@@ -19,7 +19,9 @@
 const playerGo = document.querySelector('.playerGo');
 const submitGo = document.querySelector('.submitGo');
 
-let round = 0
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 console.log(playerGo);
 
@@ -49,12 +51,14 @@ function playRound(){
        (outcomeString == 'rockscissors') ||
        (outcomeString == 'paperrock') ||
        (outcomeString == 'scissorspapert')
-   ){resultString = 'you Win! ' + player + ' beats ' + computer;
+   ){   playerScore++;
+       resultString = 'you Win! ' + player + ' beats ' + computer;
    } else if(
    (outcomeString == 'rockpaper') ||
    (outcomeString == 'paperscissors')||
    (outcomeString == 'scissorsrock')
-   ){resultString = 'you lose! ' + computer + ' beats ' + player;
+   ){   computerScore++;
+       resultString = 'you lose! ' + computer + ' beats ' + player;
    } else if(
     (outcomeString == 'rockrock')||
     (outcomeString == 'paperpaper')||
@@ -69,8 +73,32 @@ function playRound(){
 
 function game(){
 
-playRound()
+    let winnerMessage
+
+while (round <5){
+round++;
+playRound()}
+
+  if(round =5){
+      if(playerScore > computerScore){
+        winnerMessage = 'you win ' + playerScore + " - " + computerScore;
+        
+      }
+      else if(playerScore < computerScore){
+        winnerMessage = 'you lose ' + playerScore + " - " + computerScore
+      }else {winnerMessage = "it's a draw" + computerScore + " - " + playerScore};        
+      }
+      alert(winnerMessage)
+      resetGame()
     
+  }
+
+
+function resetGame(){
+
+round = 0 ;
+playerScore = 0;
+computerScore = 0
 }
 
 submitGo.addEventListener('click',game)
