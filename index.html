@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<head>
+
+</head>
+
+<body>
+
+<div class ='form'>
+
+    <label for = 'playerGo'>Please select Rock Paper or Scissors:</label>
+    <input type ='submit' value = 'Go' class ='submitGo'> 
+</div>
+
+<script>
+
+
+const playerGo = document.querySelector('.playerGo');
+const submitGo = document.querySelector('.submitGo');
+
+let round = 0
+
+console.log(playerGo);
+
+
+
+function computerPlay(string) {
+
+                         
+const selections = ['rock', 'paper', 'scissors'];
+let randomNumber = Math.floor(Math.random()*selections.length);
+let computerPick = selections[randomNumber];
+return computerPick;
+
+
+}
+
+function playRound(){
+
+    let playerstring = prompt('Please select Rock, Paper or scissors','rock')
+    let player = playerstring.toLowerCase()
+    let computer = computerPlay();
+    let outcomeString = player + computer;   
+    let resultString; 
+    
+
+   if(
+       (outcomeString == 'rockscissors') ||
+       (outcomeString == 'paperrock') ||
+       (outcomeString == 'scissorspapert')
+   ){resultString = 'you Win! ' + player + ' beats ' + computer;
+   } else if(
+   (outcomeString == 'rockpaper') ||
+   (outcomeString == 'paperscissors')||
+   (outcomeString == 'scissorsrock')
+   ){resultString = 'you lose! ' + computer + ' beats ' + player;
+   } else if(
+    (outcomeString == 'rockrock')||
+    (outcomeString == 'paperpaper')||
+    (outcomeString == 'scissorsscissors')
+   ){resultString = ' its a Draw you both picked ' + player;
+   } else{resultString = 'you did not select rock, paper or scissors, please try again!'};
+   console.log(resultString)
+   return resultString   
+
+}
+
+
+function game(){
+
+playRound()
+    
+}
+
+submitGo.addEventListener('click',game)
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
